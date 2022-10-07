@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <a th:href="@{/agregar}">Agregar personaje</a>
+        <div th:if="${personajes != null and !personajes.empty}">
+            <table border="2">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Peso</th>
+                    <th>Historia</th>
+                    <th>Imagen</th>
+                </tr>
+                <tr th:each="personaje : ${personajes}">
+                    <td th:text="${personaje.idpersonaje}">Muestra Id</td>
+                    <td th:text="${personaje.nombre}">Muestra Nombre</td>
+                    <td th:text="${personaje.edad}">Muestra Edad</td>
+                    <td th:text="${personaje.peso}">Muestra Peso</td>
+                    <td th:text="${personaje.Historia}">Muestra Historia</td>
+                    <td th:text="${personaje.imagen}">Muestra Imagen</td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${personajes==null or personajes.empty}">
+            La lista no tiene informacion
+        </div>
+        <div th:if="${personajes==null}">
+            error al traer la informacion
+        </div>
+    </body>
+</html>
